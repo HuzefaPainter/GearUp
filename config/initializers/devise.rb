@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '15ae66c9fceca22ce79d25de11edd26dc3fd0863b6418781fb8912cdf0093dfddbcfefee18191faf18d8c35c0f7220c7f7be3546bae49c0b2ff57a488a18dc75'
+  # config.secret_key = '2c28611edc462acb766828533ab4d821c4cfe5bf30f9b2fa83f848d28825510e876834bc7277d0ce3b678cd1f4c32bb23e38407d311b8a4877bdbbd8ed335a14'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -25,7 +25,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-  config.navigational_formats = ['*/*', :html, :turbo_stream]
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '9e2ea37d49b2d5a5774a73e598c0fece6f551cdfa1078a0e9d93048bd148f0687fa9e0a6347dd1f36f55215a45306b4afd1032bf3acb4c80073f5ac96b386b83'
+  # config.pepper = '2faec89ab728856a8d81ac5df0c2873d15894f88389cb696e067d44eeb3d545370c4672921c1e49c13ebee9825591e00628c973bc507fa5658eeb88300753131'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -244,7 +244,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -263,7 +263,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html, :turbo_stream]
+  config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete

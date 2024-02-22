@@ -1,1 +1,10 @@
+<% if user_signed_in? %>
+ <div> Welcome <%= current_user.first_name %> <%= current_user.last_name %></div>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %>
+<% end %>
+<% if user_signed_in? %>
+  <%= link_to 'Edit Profile', edit_user_registration_path %>
+<% end %>
 <h1>Hello home</h1>
