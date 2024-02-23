@@ -1,10 +1,32 @@
-<% if user_signed_in? %>
- <div> Welcome <%= current_user.first_name %> <%= current_user.last_name %></div>
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= button_to "Sign in", new_user_session_path %>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById('update-location-form');
+  var locationDropdown = form.querySelector('#user_location_id'); // Adjust the ID based on your actual HTML
+
+  locationDropdown.addEventListener('change', function() {
+    form.submit();
+  });
+});
+</script>
+<div>
+  <% if user_signed_in? %>
+    <div> Welcome <%= current_user.first_name %> <%= current_user.last_name %></div>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit Profile', edit_user_registration_path %>
+  <% end %>
+<br>
+<br>
+<%= form_for current_user, url: home_index_path, method: :post , html: { id: 'update-location-form' } do |f| %>
+  <div class="field">
+    <%= f.label :location_id %>
+    <% if current_user.location_id.present? %>
+      <%= f.collection_select :location_id, @locations, :id, :name, { selected: current_user.location_id } %>
+    <% else %>
+      <%= f.collection_select :location_id, @locations, :id, :name, { include_blank: 'Select Location' }%>
+    <% end %>
+  </div>
 <% end %>
-<% if user_signed_in? %>
-  <%= link_to 'Edit Profile', edit_user_registration_path %>
-<% end %>
+<br>
 <h1>Hello home</h1>
