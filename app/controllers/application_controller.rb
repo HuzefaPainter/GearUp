@@ -11,8 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    Rails.logger.debug "User not signed in. Redirecting to login page."
-    unless user_signed_in? || (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new')
+    unless user_signed_in? || (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'create')
+
+      Rails.logger.debug "User not signed in. Redirecting to login page."
+      Rails.logger.debug "controller_name was #{controller_name} and action_name was #{action_name}."
       redirect_to new_user_session_path
     end
   end
